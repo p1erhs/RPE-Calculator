@@ -4,13 +4,16 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0" />
         <title>RPE Calculator • Backoff</title>
-        <script>
-            tailwind.config = { darkMode: "class" };
-        </script>
+
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="icon" href="favicon.ico" />
     </head>
     <body class="bg-gray-100 text-gray-900 font-sans">
+        <script>
+            // Force light mode: clear any dark‐mode class and stored preference
+            document.documentElement.classList.remove("dark");
+            localStorage.removeItem("theme");
+        </script>
         <!-- MOBILE HEADER -->
         <header
             class="md:hidden flex items-center justify-between bg-gray-200 dark:bg-gray-800 h-16 px-4 fixed inset-x-0 top-0 z-30"
