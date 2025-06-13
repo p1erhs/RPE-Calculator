@@ -2,8 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="About the extended RPE Calculator project." />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
         <title>RPE Calculator • About</title>
         <script>
             tailwind.config = { darkMode: "class" };
@@ -11,53 +10,84 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="icon" href="favicon.ico" />
     </head>
-    <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-        <div class="flex min-h-screen">
-            <aside class="hidden md:block w-64 bg-gray-200 dark:bg-gray-800 p-6 fixed inset-y-0">
-                <h1 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-8">RPE Calculator</h1>
-                <nav class="space-y-4">
-                    <a href="index.html" class="block px-4 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"
-                        >Home</a
-                    >
-                    <a href="backoff.html" class="block px-4 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"
-                        >Backoff</a
-                    >
-                    <a href="about.html" class="block px-4 py-2 rounded bg-blue-600 dark:bg-blue-500 text-white"
-                        >About</a
-                    >
-                </nav>
-                <button
-                    id="themeToggle"
-                    class="mt-8 w-full px-4 py-2 bg-gray-300 dark:bg-gray-700 rounded text-gray-900 dark:text-gray-100"
+    <body class="bg-gray-100 text-gray-900 font-sans">
+        <!-- Mobile Header -->
+        <header
+            class="md:hidden flex items-center justify-between bg-gray-200 dark:bg-gray-800 p-4 fixed inset-x-0 top-0 z-30"
+        >
+            <button id="mobileNavBtn" class="text-2xl">☰</button>
+        </header>
+
+        <!-- Sidebar -->
+        <aside
+            id="sidebar"
+            class="fixed inset-y-0 left-0 w-64 bg-gray-200 dark:bg-gray-800 p-6 pt-24 transform -translate-x-full md:translate-x-0 transition-transform duration-200 z-40"
+        >
+            <button id="closeNavBtn" class="absolute top-4 right-4 text-xl md:hidden">×</button>
+            <h2 class="text-2xl font-bold mb-6 dark:text-gray-100">RPE Calculator</h2>
+            <nav class="space-y-4">
+                <a href="index.html" class="block px-4 py-2 hover:bg-gray-300 dark:hover:bg-gray-700 rounded">Home</a>
+                <a href="backoff.html" class="block px-4 py-2 hover:bg-gray-300 dark:hover:bg-gray-700 rounded"
+                    >Backoff</a
                 >
-                    Toggle Dark
-                </button>
-            </aside>
+                <a href="about.html" class="block px-4 py-2 bg-blue-600 text-white rounded">About</a>
+            </nav>
+        </aside>
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-30 md:hidden"></div>
 
-            <main class="flex-1 ml-0 md:ml-64 p-8">
-                <nav class="md:hidden mb-6 flex justify-around bg-gray-200 dark:bg-gray-800 p-4 rounded">
-                    <a href="index.html" class="text-blue-600 dark:text-blue-400">Home</a>
-                    <a href="backoff.html" class="text-blue-600 dark:text-blue-400">Backoff</a>
-                    <a href="about.html" class="text-blue-600 dark:text-blue-400 font-semibold">About</a>
-                    <button id="mobileThemeToggle" class="text-blue-600 dark:text-blue-400">🌓</button>
-                </nav>
-
-                <section class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
+        <!-- Main Content -->
+        <main class="pt-20 md:pt-16 pl-0 md:pl-64 p-4 md:p-8 transition-all duration-200">
+            <div class="mx-auto max-w-4xl">
+                <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
                     <h2 class="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400">About This Project</h2>
-                    <p class="mb-4">
-                        This tool is inspired by
-                        <a href="https://www.rpecalculator.com" class="text-blue-600 dark:text-blue-400 hover:underline"
+                    <p class="mb-4 text-gray-800 dark:text-gray-200">
+                        Inspired by
+                        <a href="https://www.rpecalculator.com" class="text-blue-500 dark:text-blue-400 hover:underline"
                             >RPECalculator.com</a
-                        >, but extended to include RPE values down to 4.0 based on my own training needs.
+                        >, this tool extends the RPE chart down to 4.0 for finer control at lower effort levels.
                     </p>
-                    <p>
-                        By offering a wider RPE range and an integrated Back-off planner, you can tailor your intensity
-                        and volume precisely. Thanks for trying it out—lift safe and train smart!
+                    <p class="text-gray-800 dark:text-gray-200">
+                        It’s a static, mobile-friendly app—enter your last set, get an estimated 1RM, view the full RPE
+                        chart, and plan your back-off sets without any build step. Open in your browser and start
+                        lifting!
                     </p>
                 </section>
-            </main>
-        </div>
+            </div>
+        </main>
 
-        <script src="script.js"></script>
+        <script src="rpe-app.js"></script>
+        <script>
+            // Off-canvas nav & theme toggle
+            const openBtn = document.getElementById("mobileNavBtn");
+            const closeBtn = document.getElementById("closeNavBtn");
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("overlay");
+            const toggleBtns = [document.getElementById("themeToggle"), document.getElementById("themeToggleMobile")];
+            const root = document.documentElement;
+            function openNav() {
+                sidebar.classList.remove("-translate-x-full");
+                overlay.classList.remove("hidden");
+            }
+            function closeNav() {
+                sidebar.classList.add("-translate-x-full");
+                overlay.classList.add("hidden");
+            }
+            openBtn.addEventListener("click", openNav);
+            closeBtn?.addEventListener("click", closeNav);
+            overlay.addEventListener("click", closeNav);
+            (function () {
+                const stored = localStorage.getItem("theme");
+                if (stored === "dark" || (!stored && window.matchMedia("(prefers-color-scheme:dark)").matches)) {
+                    root.classList.add("dark");
+                }
+            })();
+            toggleBtns.forEach((btn) => {
+                if (!btn) return;
+                btn.addEventListener("click", () => {
+                    const d = root.classList.toggle("dark");
+                    localStorage.setItem("theme", d ? "dark" : "light");
+                });
+            });
+        </script>
     </body>
 </html>

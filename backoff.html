@@ -2,8 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Plan your backoff set based on your last set." />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
         <title>RPE Calculator • Backoff</title>
         <script>
             tailwind.config = { darkMode: "class" };
@@ -11,57 +10,49 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="icon" href="favicon.ico" />
     </head>
-    <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <body class="bg-gray-100 text-gray-900 font-sans">
         <!-- Mobile Header -->
-        <header class="md:hidden flex items-center justify-between bg-gray-200 dark:bg-gray-800 p-4">
-            <button id="mobileNavBtn" class="text-blue-600 dark:text-blue-400 text-2xl">☰</button>
-            <h1 class="text-xl font-bold text-blue-600 dark:text-blue-400">RPE Calculator</h1>
-            <button id="mobileThemeToggle" class="text-blue-600 dark:text-blue-400">🌓</button>
+        <header
+            class="md:hidden flex items-center justify-between bg-gray-200 dark:bg-gray-800 p-4 fixed inset-x-0 top-0 z-30"
+        >
+            <button id="mobileNavBtn" class="text-2xl">☰</button>
         </header>
+        <!-- Sidebar -->
+        <aside
+            id="sidebar"
+            class="fixed inset-y-0 left-0 w-64 bg-gray-200 dark:bg-gray-800 p-6 pt-24 transform -translate-x-full md:translate-x-0 transition-transform duration-200 z-40"
+        >
+            <button id="closeNavBtn" class="absolute top-4 right-4 text-xl md:hidden">×</button>
+            <h2 class="text-2xl font-bold mb-6 dark:text-gray-100">RPE Calculator</h2>
+            <nav class="space-y-4">
+                <a href="index.html" class="block px-4 py-2 hover:bg-gray-300 dark:hover:bg-gray-700 rounded">Home</a>
+                <a href="backoff.html" class="block px-4 py-2 bg-blue-600 text-white rounded">Backoff</a>
+                <a href="about.html" class="block px-4 py-2 hover:bg-gray-300 dark:hover:bg-gray-700 rounded">About</a>
+            </nav>
+        </aside>
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-30 md:hidden"></div>
 
-        <div class="flex min-h-screen">
-            <!-- Sidebar -->
-            <aside id="sidebar" class="hidden md:block w-64 bg-gray-200 dark:bg-gray-800 p-6 fixed inset-y-0">
-                <h1 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-8">RPE Calculator</h1>
-                <nav class="space-y-4">
-                    <a href="index.html" class="block px-4 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"
-                        >Home</a
-                    >
-                    <a href="backoff.html" class="block px-4 py-2 rounded bg-blue-600 dark:bg-blue-500 text-white"
-                        >Backoff</a
-                    >
-                    <a href="about.html" class="block px-4 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"
-                        >About</a
-                    >
-                </nav>
-                <button
-                    id="themeToggle"
-                    class="mt-8 w-full px-4 py-2 bg-gray-300 dark:bg-gray-700 rounded text-gray-900 dark:text-gray-100"
-                >
-                    Toggle Dark
-                </button>
-            </aside>
-
-            <!-- Main content -->
-            <main class="flex-1 ml-0 md:ml-64 p-4 md:p-8">
-                <section class="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-lg shadow-md">
+        <!-- Main Content -->
+        <main class="pt-20 md:pt-16 pl-0 md:pl-64 p-4 md:p-8 transition-all duration-200">
+            <div class="mx-auto max-w-4xl">
+                <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
                     <h2 class="text-xl font-semibold mb-6 text-blue-600 dark:text-blue-400">Next Set Planner</h2>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                         <div>
-                            <label for="lastWeight" class="block text-sm font-medium">Last Set Weight</label>
+                            <label for="lastWeight" class="block text-sm">Last Set Weight</label>
                             <input
                                 id="lastWeight"
                                 type="number"
                                 placeholder="e.g. 100"
-                                class="mt-1 w-full border-gray-300 dark:border-gray-600 rounded p-2 bg-gray-50 dark:bg-gray-700"
+                                class="mt-1 w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded p-2"
                             />
                         </div>
                         <div>
-                            <label for="lastReps" class="block text-sm font-medium">Last Set Reps</label>
+                            <label for="lastReps" class="block text-sm">Last Set Reps</label>
                             <select
                                 id="lastReps"
-                                class="mt-1 w-full border-gray-300 dark:border-gray-600 rounded p-2 bg-gray-50 dark:bg-gray-700"
+                                class="mt-1 w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded p-2"
                             >
                                 <option>1</option>
                                 <option>2</option>
@@ -78,10 +69,10 @@
                             </select>
                         </div>
                         <div>
-                            <label for="lastRpe" class="block text-sm font-medium">Last Set RPE</label>
+                            <label for="lastRpe" class="block text-sm">Last Set RPE</label>
                             <select
                                 id="lastRpe"
-                                class="mt-1 w-full border-gray-300 dark:border-gray-600 rounded p-2 bg-gray-50 dark:bg-gray-700"
+                                class="mt-1 w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded p-2"
                             >
                                 <option>4.0</option>
                                 <option>4.5</option>
@@ -102,10 +93,10 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
-                            <label for="targetReps" class="block text-sm font-medium">Target Reps</label>
+                            <label for="targetReps" class="block text-sm">Target Reps</label>
                             <select
                                 id="targetReps"
-                                class="mt-1 w-full border-gray-300 dark:border-gray-600 rounded p-2 bg-gray-50 dark:bg-gray-700"
+                                class="mt-1 w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded p-2"
                             >
                                 <option>1</option>
                                 <option>2</option>
@@ -122,10 +113,10 @@
                             </select>
                         </div>
                         <div>
-                            <label for="targetRpe" class="block text-sm font-medium">Target RPE</label>
+                            <label for="targetRpe" class="block text-sm">Target RPE</label>
                             <select
                                 id="targetRpe"
-                                class="mt-1 w-full border-gray-300 dark:border-gray-600 rounded p-2 bg-gray-50 dark:bg-gray-700"
+                                class="mt-1 w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded p-2"
                             >
                                 <option>4.0</option>
                                 <option>4.5</option>
@@ -145,18 +136,51 @@
                         <div class="md:col-span-2">
                             <button
                                 id="planBtn"
-                                class="w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-3 rounded-full shadow-lg transform hover:scale-105 transition-transform duration-200"
+                                class="w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-3 rounded-full shadow-lg transform hover:scale-105 transition"
                             >
                                 Compute Next Load
                             </button>
                         </div>
                     </div>
 
-                    <div id="planResult" class="mt-6 text-lg font-medium text-red-600 dark:text-red-400"></div>
+                    <div id="planResult" class="mt-6 text-red-600 dark:text-red-400"></div>
                 </section>
-            </main>
-        </div>
+            </div>
+        </main>
 
-        <script src="script.js"></script>
+        <script src="rpe-app.js"></script>
+        <script>
+            // Off-canvas nav & theme toggle
+            const openBtn = document.getElementById("mobileNavBtn");
+            const closeBtn = document.getElementById("closeNavBtn");
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("overlay");
+            const toggleBtns = [document.getElementById("themeToggle"), document.getElementById("themeToggleMobile")];
+            const root = document.documentElement;
+            function openNav() {
+                sidebar.classList.remove("-translate-x-full");
+                overlay.classList.remove("hidden");
+            }
+            function closeNav() {
+                sidebar.classList.add("-translate-x-full");
+                overlay.classList.add("hidden");
+            }
+            openBtn.addEventListener("click", openNav);
+            closeBtn?.addEventListener("click", closeNav);
+            overlay.addEventListener("click", closeNav);
+            (function () {
+                const stored = localStorage.getItem("theme");
+                if (stored === "dark" || (!stored && window.matchMedia("(prefers-color-scheme:dark)").matches)) {
+                    root.classList.add("dark");
+                }
+            })();
+            toggleBtns.forEach((btn) => {
+                if (!btn) return;
+                btn.addEventListener("click", () => {
+                    const d = root.classList.toggle("dark");
+                    localStorage.setItem("theme", d ? "dark" : "light");
+                });
+            });
+        </script>
     </body>
 </html>
