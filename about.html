@@ -4,7 +4,11 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0" />
         <title>RPE Calculator • About</title>
-
+        <script>
+            tailwind.config = {
+                darkMode: false /* ← no dark: utilities will be generated */,
+            };
+        </script>
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="icon" href="favicon.ico" />
     </head>
@@ -15,16 +19,14 @@
             localStorage.removeItem("theme");
         </script>
         <!-- MOBILE HEADER -->
-        <header
-            class="md:hidden flex items-center justify-between bg-gray-200 dark:bg-gray-800 h-16 px-4 fixed inset-x-0 top-0 z-30"
-        >
+        <header class="md:hidden flex items-center justify-between h-16 px-4 fixed inset-x-0 top-0 z-30">
             <button id="mobileNavBtn" class="text-2xl">☰</button>
         </header>
 
         <!-- SIDEBAR -->
         <aside
             id="sidebar"
-            class="fixed inset-y-0 left-0 w-64 bg-gray-200 dark:bg-gray-800 p-6 pt-20 transform -translate-x-full md:translate-x-0 transition-transform duration-200 z-40"
+            class="fixed inset-y-0 left-0 w-64 p-6 pt-20 transform -translate-x-full md:translate-x-0 transition-transform duration-200 z-40"
         >
             <button id="closeNavBtn" class="absolute top-4 right-4 text-xl md:hidden">×</button>
             <h2 class="text-2xl font-bold mb-6 dark:text-gray-100">RPE Calculator</h2>
@@ -39,7 +41,7 @@
         <!-- MAIN CONTENT -->
         <main class="pt-16 md:pt-16 pl-0 md:pl-64">
             <div class="mx-auto max-w-4xl px-4 md:px-8 py-8">
-                <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                <section class="p-6 rounded-lg shadow-lg">
                     <h2 class="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400">About This Project</h2>
                     <p class="mb-4">
                         This tool is inspired by
