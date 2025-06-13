@@ -38,16 +38,15 @@
             <div class="mx-auto max-w-4xl px-4 md:px-8 py-8">
                 <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
                     <h2 class="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400">About This Project</h2>
-                    <p class="mb-4 text-gray-900 dark:text-gray-200">
-                        I took the idea of
+                    <p class="mb-4">
+                        This tool is inspired by
                         <a href="https://www.rpecalculator.com" class="text-blue-600 dark:text-blue-400 hover:underline"
                             >RPECalculator.com</a
-                        >
-                        and extended it to include lower RPE values based on my personal training experience.
+                        >, but extended to include RPE values down to 4.0 based on my own training needs.
                     </p>
-                    <p class="text-gray-900 dark:text-gray-200">
-                        Often I needed finer control at RPEs below 5, so this tool adds those options, along with a 1RM
-                        estimator and back-off set planner, all in a simple static app.
+                    <p>
+                        By offering a wider RPE range and an integrated Back-off planner, you can tailor your intensity
+                        and volume precisely. Thanks for trying it out—lift safe and train smart!
                     </p>
                 </section>
             </div>
@@ -79,10 +78,6 @@
                     localStorage.setItem("theme", isDark ? "dark" : "light");
                 });
             });
-            // Apply stored theme
-            if (localStorage.getItem("theme") === "dark") {
-                document.documentElement.classList.add("dark");
-            }
         </script>
     </body>
 </html>
