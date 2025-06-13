@@ -15,19 +15,17 @@
             document.documentElement.classList.remove("dark");
             localStorage.removeItem("theme");
         </script>
-        <header
-            class="md:hidden flex items-center justify-between bg-gray-200 dark:bg-gray-800 h-16 px-4 fixed inset-x-0 top-0 z-30"
-        >
+        <header class="md:hidden flex items-center justify-between bg-gray-200 h-16 px-4 fixed inset-x-0 top-0 z-30">
             <button id="mobileNavBtn" class="text-2xl">☰</button>
         </header>
 
         <!-- SIDEBAR -->
         <aside
             id="sidebar"
-            class="fixed inset-y-0 left-0 w-64 bg-gray-200 dark:bg-gray-800 p-6 pt-20 transform -translate-x-full md:translate-x-0 transition-transform duration-200 z-40"
+            class="fixed inset-y-0 left-0 w-64 bg-gray-200 p-6 pt-20 transform -translate-x-full md:translate-x-0 transition-transform duration-200 z-40"
         >
             <button id="closeNavBtn" class="absolute top-4 right-4 text-xl md:hidden">×</button>
-            <h2 class="text-2xl font-bold mb-6 dark:text-gray-100">RPE Calculator</h2>
+            <h2 class="text-2xl font-bold mb-6">RPE Calculator</h2>
             <nav class="space-y-4">
                 <a href="index.html" class="block px-4 py-2 bg-blue-600 text-white rounded">Home</a>
                 <a href="backoff.html" class="block px-4 py-2 hover:bg-blue-700 rounded">Backoff</a>
@@ -39,8 +37,8 @@
         <!-- MAIN CONTENT -->
         <main class="pt-16 md:pt-16 pl-0 md:pl-64 p-0">
             <div class="mx-auto max-w-4xl px-4 md:px-8 py-8">
-                <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h2 class="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400">Top Set Calculator</h2>
+                <section class="bg-gray-50 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-xl font-semibold mb-4 text-blue-600">Top Set Calculator</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label for="weight" class="block text-sm">Last Set Weight</label>
@@ -48,7 +46,7 @@
                                 id="weight"
                                 type="number"
                                 placeholder="e.g. 100"
-                                class="mt-1 w-full bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded p-2"
+                                class="mt-1 w-full bg-white rounded p-2"
                             />
                         </div>
                         <div>
@@ -81,15 +79,12 @@
                         </div>
                     </div>
 
-                    <div id="result" class="mt-6 text-red-600 dark:text-red-400"></div>
+                    <div id="result" class="mt-6 text-red-600"></div>
 
                     <div id="chartResult" class="mt-8">
                         <div id="repsNav" class="flex flex-wrap space-x-2 mb-4"></div>
                         <div class="overflow-x-auto">
-                            <table
-                                id="chartTable"
-                                class="min-w-full divide-y divide-gray-300 dark:divide-gray-700"
-                            ></table>
+                            <table id="chartTable" class="min-w-full divide-y divide-gray-300"></table>
                         </div>
                     </div>
                 </section>
