@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 btn.addEventListener("click", () => renderChart(r));
                 repsNav.appendChild(btn);
             }
-            chartTable.innerHTML = `<thead><tr class="bg-gray-100 "><th class="px-4 py-2">RPE</th><th class="px-4 py-2">% of 1RM</th><th class="px-4 py-2">Load</th></tr></thead>`;
+            chartTable.innerHTML = `<thead><tr><th class="px-4 py-2">RPE</th><th class="px-4 py-2">% of 1RM</th><th class="px-4 py-2">Load</th></tr></thead>`;
             const tbody = document.createElement("tbody");
             tbody.className = "divide-y divide-gray-200 dark:divide-gray-700";
             Object.entries(rpeTable).forEach(([val, arr], i) => {
