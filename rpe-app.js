@@ -58,11 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 btn.className =
                     r === currentReps
                         ? "px-3 py-1 bg-blue-600 text-white rounded"
-                        : "px-3 py-1 text-blue-600 hover:bg-blue-100 dark:hover:bg-gray-700 rounded";
+                        : "px-3 py-1 text-blue-600 hover:bg-blue-100  rounded";
                 btn.addEventListener("click", () => renderChart(r));
                 repsNav.appendChild(btn);
             }
-            chartTable.innerHTML = `<thead><tr class="bg-gray-100 dark:bg-gray-800"><th class="px-4 py-2">RPE</th><th class="px-4 py-2">% of 1RM</th><th class="px-4 py-2">Load</th></tr></thead>`;
+            chartTable.innerHTML = `<thead><tr class="bg-gray-100 "><th class="px-4 py-2">RPE</th><th class="px-4 py-2">% of 1RM</th><th class="px-4 py-2">Load</th></tr></thead>`;
             const tbody = document.createElement("tbody");
             tbody.className = "divide-y divide-gray-200 dark:divide-gray-700";
             Object.entries(rpeTable).forEach(([val, arr], i) => {
@@ -70,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     lbl = (pct * 100).toFixed(1) + "%",
                     load = window.e1rm ? (window.e1rm * pct).toFixed(1) : "-";
                 const tr = document.createElement("tr");
-                tr.className = i % 2 === 0 ? "bg-white dark:bg-gray-800" : "bg-gray-50 dark:bg-gray-700";
                 tr.innerHTML = `<td class="px-4 py-2">${val}</td><td class="px-4 py-2">${lbl}</td><td class="px-4 py-2">${load}</td>`;
                 tbody.appendChild(tr);
             });
@@ -103,7 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const tpct = rpeTable[tpv]?.[trv - 1];
             if (!tpct) return (out.textContent = "No data.");
             const nxt = (e1 * tpct).toFixed(1);
-            out.innerHTML = `<div class="bg-gray-50 dark:bg-gray-800 p-4 rounded shadow"><span class="text-blue-600 dark:text-blue-400 font-bold">Back-off Load:</span> ${nxt}</div>`;
+            out.innerHTML = `<div class="p-4 rounded shadow"><span class="text-blue-600 dark:text-blue-400 font-bold">Back-off Load:</span> ${nxt}</div>`;
         });
+        bg - gr;
     }
 });
