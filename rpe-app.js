@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!pct) return (resultEl.textContent = "No data.");
             const e1 = (weight / pct).toFixed(1);
             window.e1rm = parseFloat(e1);
-            resultEl.innerHTML = `<span class="text-blue-600 dark:text-blue-400">Estimated 1RM:</span> ${e1}`;
+            resultEl.innerHTML = `<span class="text-blue-600 ">Estimated 1RM:</span> ${e1}`;
             renderChart(reps);
         });
 
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             chartTable.innerHTML = `<thead><tr><th class="px-4 py-2">RPE</th><th class="px-4 py-2">% of 1RM</th><th class="px-4 py-2">Load</th></tr></thead>`;
             const tbody = document.createElement("tbody");
-            tbody.className = "divide-y divide-gray-200 dark:divide-gray-700";
+            tbody.className = "divide-y divide-gray-200 ";
             Object.entries(rpeTable).forEach(([val, arr], i) => {
                 const pct = arr[currentReps - 1],
                     lbl = (pct * 100).toFixed(1) + "%",
@@ -102,8 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const tpct = rpeTable[tpv]?.[trv - 1];
             if (!tpct) return (out.textContent = "No data.");
             const nxt = (e1 * tpct).toFixed(1);
-            out.innerHTML = `<div class="p-4 rounded shadow"><span class="text-blue-600 dark:text-blue-400 font-bold">Back-off Load:</span> ${nxt}</div>`;
+            out.innerHTML = `<div class="p-4 rounded shadow"><span class="text-blue-600 = font-bold">Back-off Load:</span> ${nxt}</div>`;
         });
-        bg - gr;
     }
 });
