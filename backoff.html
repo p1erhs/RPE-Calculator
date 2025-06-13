@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Plan your backoff set based on your last set." />
+        <title>RPE Calculator • Backoff</title>
+        <script>
+            tailwind.config = { darkMode: "class" };
+        </script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="icon" href="favicon.ico" />
+    </head>
+    <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+        <!-- Mobile Header -->
+        <header class="md:hidden flex items-center justify-between bg-gray-200 dark:bg-gray-800 p-4">
+            <button id="mobileNavBtn" class="text-blue-600 dark:text-blue-400 text-2xl">☰</button>
+            <h1 class="text-xl font-bold text-blue-600 dark:text-blue-400">RPE Calculator</h1>
+            <button id="mobileThemeToggle" class="text-blue-600 dark:text-blue-400">🌓</button>
+        </header>
+
+        <div class="flex min-h-screen">
+            <!-- Sidebar -->
+            <aside id="sidebar" class="hidden md:block w-64 bg-gray-200 dark:bg-gray-800 p-6 fixed inset-y-0">
+                <h1 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-8">RPE Calculator</h1>
+                <nav class="space-y-4">
+                    <a href="index.html" class="block px-4 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"
+                        >Home</a
+                    >
+                    <a href="backoff.html" class="block px-4 py-2 rounded bg-blue-600 dark:bg-blue-500 text-white"
+                        >Backoff</a
+                    >
+                    <a href="about.html" class="block px-4 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"
+                        >About</a
+                    >
+                </nav>
+                <button
+                    id="themeToggle"
+                    class="mt-8 w-full px-4 py-2 bg-gray-300 dark:bg-gray-700 rounded text-gray-900 dark:text-gray-100"
+                >
+                    Toggle Dark
+                </button>
+            </aside>
+
+            <!-- Main content -->
+            <main class="flex-1 ml-0 md:ml-64 p-4 md:p-8">
+                <section class="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold mb-6 text-blue-600 dark:text-blue-400">Next Set Planner</h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <div>
+                            <label for="lastWeight" class="block text-sm font-medium">Last Set Weight</label>
+                            <input
+                                id="lastWeight"
+                                type="number"
+                                placeholder="e.g. 100"
+                                class="mt-1 w-full border-gray-300 dark:border-gray-600 rounded p-2 bg-gray-50 dark:bg-gray-700"
+                            />
+                        </div>
+                        <div>
+                            <label for="lastReps" class="block text-sm font-medium">Last Set Reps</label>
+                            <select
+                                id="lastReps"
+                                class="mt-1 w-full border-gray-300 dark:border-gray-600 rounded p-2 bg-gray-50 dark:bg-gray-700"
+                            >
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="lastRpe" class="block text-sm font-medium">Last Set RPE</label>
+                            <select
+                                id="lastRpe"
+                                class="mt-1 w-full border-gray-300 dark:border-gray-600 rounded p-2 bg-gray-50 dark:bg-gray-700"
+                            >
+                                <option>4.0</option>
+                                <option>4.5</option>
+                                <option>5.0</option>
+                                <option>5.5</option>
+                                <option>6.0</option>
+                                <option>6.5</option>
+                                <option>7.0</option>
+                                <option>7.5</option>
+                                <option>8.0</option>
+                                <option>8.5</option>
+                                <option>9.0</option>
+                                <option>9.5</option>
+                                <option>10.0</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label for="targetReps" class="block text-sm font-medium">Target Reps</label>
+                            <select
+                                id="targetReps"
+                                class="mt-1 w-full border-gray-300 dark:border-gray-600 rounded p-2 bg-gray-50 dark:bg-gray-700"
+                            >
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="targetRpe" class="block text-sm font-medium">Target RPE</label>
+                            <select
+                                id="targetRpe"
+                                class="mt-1 w-full border-gray-300 dark:border-gray-600 rounded p-2 bg-gray-50 dark:bg-gray-700"
+                            >
+                                <option>4.0</option>
+                                <option>4.5</option>
+                                <option>5.0</option>
+                                <option>5.5</option>
+                                <option>6.0</option>
+                                <option>6.5</option>
+                                <option>7.0</option>
+                                <option>7.5</option>
+                                <option>8.0</option>
+                                <option>8.5</option>
+                                <option>9.0</option>
+                                <option>9.5</option>
+                                <option>10.0</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <button
+                                id="planBtn"
+                                class="w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-3 rounded-full shadow-lg transform hover:scale-105 transition-transform duration-200"
+                            >
+                                Compute Next Load
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="planResult" class="mt-6 text-lg font-medium text-red-600 dark:text-red-400"></div>
+                </section>
+            </main>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

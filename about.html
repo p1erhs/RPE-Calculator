@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="About the extended RPE Calculator project." />
+        <title>RPE Calculator • About</title>
+        <script>
+            tailwind.config = { darkMode: "class" };
+        </script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="icon" href="favicon.ico" />
+    </head>
+    <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+        <div class="flex min-h-screen">
+            <aside class="hidden md:block w-64 bg-gray-200 dark:bg-gray-800 p-6 fixed inset-y-0">
+                <h1 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-8">RPE Calculator</h1>
+                <nav class="space-y-4">
+                    <a href="index.html" class="block px-4 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"
+                        >Home</a
+                    >
+                    <a href="backoff.html" class="block px-4 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"
+                        >Backoff</a
+                    >
+                    <a href="about.html" class="block px-4 py-2 rounded bg-blue-600 dark:bg-blue-500 text-white"
+                        >About</a
+                    >
+                </nav>
+                <button
+                    id="themeToggle"
+                    class="mt-8 w-full px-4 py-2 bg-gray-300 dark:bg-gray-700 rounded text-gray-900 dark:text-gray-100"
+                >
+                    Toggle Dark
+                </button>
+            </aside>
+
+            <main class="flex-1 ml-0 md:ml-64 p-8">
+                <nav class="md:hidden mb-6 flex justify-around bg-gray-200 dark:bg-gray-800 p-4 rounded">
+                    <a href="index.html" class="text-blue-600 dark:text-blue-400">Home</a>
+                    <a href="backoff.html" class="text-blue-600 dark:text-blue-400">Backoff</a>
+                    <a href="about.html" class="text-blue-600 dark:text-blue-400 font-semibold">About</a>
+                    <button id="mobileThemeToggle" class="text-blue-600 dark:text-blue-400">🌓</button>
+                </nav>
+
+                <section class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
+                    <h2 class="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400">About This Project</h2>
+                    <p class="mb-4">
+                        This tool is inspired by
+                        <a href="https://www.rpecalculator.com" class="text-blue-600 dark:text-blue-400 hover:underline"
+                            >RPECalculator.com</a
+                        >, but extended to include RPE values down to 4.0 based on my own training needs.
+                    </p>
+                    <p>
+                        By offering a wider RPE range and an integrated Back-off planner, you can tailor your intensity
+                        and volume precisely. Thanks for trying it out—lift safe and train smart!
+                    </p>
+                </section>
+            </main>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
