@@ -28,7 +28,7 @@
         <!-- SIDEBAR -->
         <aside
             id="sidebar"
-            class="fixed inset-y-0 left-0 w-64 p-6 pt-20 transform -translate-x-full md:translate-x-0 transition-transform duration-200 z-40"
+            class="bg-white fixed inset-y-0 left-0 w-64 p-6 pt-20 transform -translate-x-full md:translate-x-0 transition-transform duration-200 z-40"
         >
             <button id="closeNavBtn" class="absolute top-4 right-4 text-xl md:hidden">×</button>
             <h2 class="text-2xl font-bold mb-6">RPE Calculator</h2>
@@ -115,17 +115,6 @@
             openBtn.addEventListener("click", openNav);
             closeBtn?.addEventListener("click", closeNav);
             overlay.addEventListener("click", closeNav);
-
-            // Theme toggle
-            document.querySelectorAll(".theme-toggle").forEach((btn) => {
-                btn.addEventListener("click", () => {
-                    document.documentElement.classList.toggle("dark");
-                    localStorage.setItem(
-                        "theme",
-                        document.documentElement.classList.contains("dark") ? "dark" : "light"
-                    );
-                });
-            });
         </script>
     </body>
 </html>
