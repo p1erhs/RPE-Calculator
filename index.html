@@ -11,17 +11,17 @@
         <link rel="icon" href="favicon.ico" />
     </head>
     <body class="bg-gray-100 text-gray-900 font-sans">
-        <!-- Mobile Header -->
+        <!-- MOBILE HEADER -->
         <header
-            class="md:hidden flex items-center justify-between bg-gray-200 dark:bg-gray-800 p-4 fixed inset-x-0 top-0 z-30"
+            class="md:hidden flex items-center justify-between bg-gray-200 dark:bg-gray-800 h-16 px-4 fixed inset-x-0 top-0 z-30"
         >
             <button id="mobileNavBtn" class="text-2xl">☰</button>
         </header>
 
-        <!-- Sidebar -->
+        <!-- SIDEBAR -->
         <aside
             id="sidebar"
-            class="fixed inset-y-0 left-0 w-64 bg-gray-200 dark:bg-gray-800 p-6 pt-24 transform -translate-x-full md:translate-x-0 transition-transform duration-200 z-40"
+            class="fixed inset-y-0 left-0 w-64 bg-gray-200 dark:bg-gray-800 p-6 pt-20 transform -translate-x-full md:translate-x-0 transition-transform duration-200 z-40"
         >
             <button id="closeNavBtn" class="absolute top-4 right-4 text-xl md:hidden">×</button>
             <h2 class="text-2xl font-bold mb-6 dark:text-gray-100">RPE Calculator</h2>
@@ -33,9 +33,9 @@
         </aside>
         <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-30 md:hidden"></div>
 
-        <!-- Main Content -->
-        <main class="pt-20 md:pt-16 pl-0 md:pl-64 p-4 md:p-8 transition-all duration-200">
-            <div class="mx-auto max-w-4xl">
+        <!-- MAIN CONTENT -->
+        <main class="pt-16 md:pt-16 pl-0 md:pl-64 p-0">
+            <div class="mx-auto max-w-4xl px-4 md:px-8 py-8">
                 <section class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
                     <h2 class="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400">Top Set Calculator</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -49,15 +49,15 @@
                             />
                         </div>
                         <div>
-                            <label for="reps" class="block text-sm"
-                                >Last Set Reps: <span id="repsValue" class="font-bold">5</span></label
-                            >
+                            <label for="reps" class="block text-sm">
+                                Last Set Reps: <span id="repsValue" class="font-bold">5</span>
+                            </label>
                             <input id="reps" type="range" min="1" max="12" value="5" class="mt-1 w-full" />
                         </div>
                         <div>
-                            <label for="rpe" class="block text-sm"
-                                >Last Set RPE: <span id="rpeValue" class="font-bold">8.0</span></label
-                            >
+                            <label for="rpe" class="block text-sm">
+                                Last Set RPE: <span id="rpeValue" class="font-bold">8.0</span>
+                            </label>
                             <input
                                 id="rpe"
                                 type="range"
@@ -77,7 +77,9 @@
                             </button>
                         </div>
                     </div>
+
                     <div id="result" class="mt-6 text-red-600 dark:text-red-400"></div>
+
                     <div id="chartResult" class="mt-8">
                         <div id="repsNav" class="flex flex-wrap space-x-2 mb-4"></div>
                         <div class="overflow-x-auto">
@@ -110,37 +112,20 @@
             closeBtn?.addEventListener("click", closeNav);
             overlay.addEventListener("click", closeNav);
 
-            // Theme toggle via event delegation
-            const root = document.documentElement;
-            // On load: apply stored preference or system default
-            const storedTheme = localStorage.getItem("theme");
-            if (storedTheme === "dark" || (!storedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-                root.classList.add("dark");
-            }
-            // Delegate clicks on any .theme-toggle button
-            document.body.addEventListener("click", (e) => {
-                if (e.target.closest(".theme-toggle")) {
-                    const isDark = root.classList.toggle("dark");
-                    localStorage.setItem("theme", isDark ? "dark" : "light");
-                }
-            });
-
             // Theme toggle
-            const toggleBtns = [document.getElementById("themeToggle"), document.getElementById("themeToggleMobile")];
-            const root1 = document.documentElement;
-            (function () {
-                const stored = localStorage.getItem("theme");
-                if (stored === "dark" || (!stored && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-                    root1.classList.add("dark");
-                }
-            })();
-            toggleBtns.forEach((btn) => {
-                if (!btn) return;
+            document.querySelectorAll(".theme-toggle").forEach((btn) => {
                 btn.addEventListener("click", () => {
-                    const isDark = root1.classList.toggle("dark");
-                    localStorage.setItem("theme", isDark ? "dark" : "light");
+                    document.documentElement.classList.toggle("dark");
+                    localStorage.setItem(
+                        "theme",
+                        document.documentElement.classList.contains("dark") ? "dark" : "light"
+                    );
                 });
             });
+            // Apply stored theme on load
+            if (localStorage.getItem("theme") === "dark") {
+                document.documentElement.classList.add("dark");
+            }
         </script>
     </body>
 </html>
